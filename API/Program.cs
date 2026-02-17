@@ -27,8 +27,7 @@ namespace API
             {
                 options.AddPolicy("AllowFrontend", policy =>
                 {
-                    // Replace with the actual URL/Port your UI project is running on
-                    policy.WithOrigins("http://localhost:5043", "https://localhost:5043")
+                    policy.WithOrigins("http://localhost:7057", "https://localhost:7056")
                           .AllowAnyHeader()
                           .AllowAnyMethod();
                 });
