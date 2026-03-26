@@ -33,7 +33,13 @@ namespace API
                     ValidateAudience = false
                 };
             });
-
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("CanView", policy => policy.RequireClaim("permission", "view_product"));
+                options.AddPolicy("CanAdd", policy => policy.RequireClaim("permission", "add_product"));
+                options.AddPolicy("CanEdit", policy => policy.RequireClaim("permission", "edit_product"));
+                options.AddPolicy("CanDelete", policy => policy.RequireClaim("permission", "delete_product"));
+            });
             // Add services to the container.
 
             builder.Services.AddControllers();

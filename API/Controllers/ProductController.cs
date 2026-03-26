@@ -18,6 +18,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "CanView")]
         public IActionResult Get()
         {
             return Ok(_productService.GetProductsForDisplay());
@@ -31,6 +32,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "CanAdd")]
         public IActionResult Post([FromBody] Product product)
         {
             _productService.CreateProduct(product);
@@ -38,6 +40,7 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Policy = "CanEdit")]
         public IActionResult Put(int id, [FromBody] Product product)
         {
             product.Id = id;
@@ -46,6 +49,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Policy = "CanDelete")]
         public IActionResult Delete(int id)
         {
             _productService.RemoveProduct(id);
