@@ -47,7 +47,7 @@
                 password: $('#regPassword').val()
             };
             // Replace URL with your actual API endpoint
-            $.post('https://localhost:7062/api/auth/register', data)
+            $.post('https://localhost:44386/api/auth/register', data)
                 .done(() => { alert('Success!'); window.location.href = '../login.html'; })
                 .fail(() => alert('Registration failed.'));
         });
